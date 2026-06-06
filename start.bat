@@ -1,0 +1,13 @@
+@echo off
+echo Starting MongoDB and Redis...
+docker start mongodb redis
+
+echo Starting Backend...
+start cmd /k "cd /d C:\url-shortener\server && npm run dev"
+
+echo Starting Frontend...
+start cmd /k "cd /d C:\url-shortener\client && npm start"
+
+echo All done! Opening browser in 5 seconds...
+timeout /t 5
+start http://localhost:3000
